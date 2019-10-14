@@ -419,28 +419,28 @@ cBoard.controller('datasetCtrl', function ($scope, $http, $state, $stateParams, 
 
     $scope.editExp = function (col) {
         var aggregate = [{
-                name: 'sum',
-                value: 'sum'
+                name: 'СУММ',
+                value: 'СУММ'
             },
             {
-                name: 'count',
-                value: 'count'
+                name: 'КОЛВО',
+                value: 'КОЛВО'
             },
             {
-                name: 'avg',
-                value: 'avg'
+                name: 'СРЕД',
+                value: 'СРЕД'
             },
             {
-                name: 'max',
-                value: 'max'
+                name: 'МАКС',
+                value: 'МАКС'
             },
             {
-                name: 'min',
-                value: 'min'
+                name: 'МИН',
+                value: 'МИН'
             },
             {
-                name: 'distinct',
-                value: 'distinct'
+                name: 'УНИК',
+                value: 'УНИК'
             }
         ];
         var ok;
@@ -451,7 +451,7 @@ cBoard.controller('datasetCtrl', function ($scope, $http, $state, $stateParams, 
             ok = function (exp, alias) {
                 $scope.curDataset.data.expressions.push({
                     type: 'exp',
-                    exp: data.expression,
+                    exp: data.expression.replace('СУММ(', 'SUM(').replace('КОЛВО(', 'COUNT(').replace('СРЕД(', 'AVG(').replace('МАКС(', 'MAX(').replace('МИН(', 'MIN(').replace('УНИК(', 'DISTINCT('),
                     alias: data.alias,
                     id: uuid4.generate()
                 });
