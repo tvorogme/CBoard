@@ -147,6 +147,3 @@ CREATE TRIGGER insert_board_update_time_trigger
 BEFORE INSERT ON dashboard_board FOR EACH ROW SET new.update_time = now();
 CREATE TRIGGER update_board_update_time_trigger
 BEFORE UPDATE ON dashboard_board FOR EACH ROW SET new.update_time = now();
-
-INSERT INTO salaries
-VALUES (1,1);

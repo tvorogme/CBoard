@@ -451,19 +451,20 @@ cBoard.controller('datasetCtrl', function ($scope, $http, $state, $stateParams, 
             ok = function (exp, alias) {
                 $scope.curDataset.data.expressions.push({
                     type: 'exp',
-                    exp: data.expression.replace('СУММ(', 'SUM(').replace('КОЛВО(', 'COUNT(').replace('СРЕД(', 'AVG(').replace('МАКС(', 'MAX(').replace('МИН(', 'MIN(').replace('УНИК(', 'DISTINCT('),
+                    exp: data.expression.replace('СУММ(', 'sum(').replace('КОЛВО(', 'count(').replace('СРЕД(', 'avg(').replace('МАКС(', 'max(').replace('МИН(', 'min(').replace('УНИК(', 'distinct('),
                     alias: data.alias,
                     id: uuid4.generate()
                 });
             }
         } else {
-            data.expression = col.exp;
+            data.expression = col.exp.replace('СУММ(', 'sum(').replace('КОЛВО(', 'count(').replace('СРЕД(', 'avg(').replace('МАКС(', 'max(').replace('МИН(', 'min(').replace('УНИК(', 'distinct(');
             data.alias = col.alias;
             ok = function (data) {
                 col.exp = data.expression;
                 col.alias = data.alias;
             }
         }
+        
         var columnObjs = schemaToSelect($scope.curDataset.data.schema, $scope.selects);
         var expressions = $scope.curDataset.data.expressions;
         $uibModal.open({

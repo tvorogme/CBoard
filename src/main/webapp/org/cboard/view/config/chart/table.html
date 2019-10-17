@@ -52,7 +52,7 @@
                                 dnd-moved="curWidget.config.values[0].cols.splice($index, 1)"
                                 ng-click="curWidget.config.values[0].cols.splice($index, 1);"
                                 class="btn btn-default btn-sm" style="cursor: move;">
-                            {{o.aggregate_type+'('+o.col+')'+ (o.alias?(' -> '+o.alias):'')}}
+                            {{o.agg_alias+(o.alias?('('+o.alias +')'):'('+o.col+')')}}
                         </button>
                         <button type="button" class="btn btn-default btn-sm dropdown-toggle"
                                 ng-click="editSort(o);cleanRowSort(o);">
@@ -79,7 +79,7 @@
                                 <a tabindex="-1">{{'CONFIG.WIDGET.AGGREGATE_TYPE'|translate}}</a>
                                 <ul class="dropdown-menu">
                                     <li ng-repeat="a in value_aggregate_types">
-                                        <a ng-click="o.aggregate_type=a.value">{{a.name+'('+o.col+')'}}</a>
+                                        <a ng-click="o.aggregate_type=a.value; o.agg_alias=a.name;">{{a.name+'('+o.alias+')'}}</a>
                                     </li>
 
                                 </ul>
